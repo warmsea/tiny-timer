@@ -1,0 +1,22 @@
+{
+  "name": "tiny-timer",
+  "version": "0.1.0",
+  "description": "A tiny timer stays on the screen.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warmsea/tiny-timer.git"
+  },
+  "author": "Su Su",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/warmsea/tiny-timer/issues"
+  },
+  "homepage": "https://github.com/warmsea/tiny-timer#readme",
+  "devDependencies": {
+    "electron": "^9.2.0"
+  }
+}

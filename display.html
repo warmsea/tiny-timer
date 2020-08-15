@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    -->
+  <title>Tiny Timer Display</title>
+  <style>
+    body {
+      -webkit-app-region: drag;
+      user-select: none;
+      margin: 0;
+    }
+
+    #timer {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      text-align: center;
+      line-height: 30px;
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="timer">
+    <span id="negative">-</span><span id="minutes"></span><span class="separator">:</span><span id="seconds"></span>
+  </div>
+</body>
+
+</html>

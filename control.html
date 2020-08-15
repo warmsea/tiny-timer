@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    -->
+  <title>Tiny Timer Control</title>
+</head>
+
+<body>
+  <div>
+    <button onclick="toggleDisplayWindow()">Show/hide timer</button>
+  </div>
+  <div>
+    <input type="number" id="seconds" required /> minutes
+    <button onclick="onRestart()">Start</button>
+  </div>
+  <div id="error" style="color: red;" hidden=true>Input a number from 0 to 1440.</div>
+  <div>
+    <button onclick="resumeTimer()">Resume</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+</body>
+<script>
+  function onRestart() {
+    const seconds = Math.ceil(parseFloat(document.getElementById('seconds').value) * 60);
+    if (!Number.isNaN(seconds) && 0 <= seconds <= 86400) {
+      startTimer(seconds);
+      document.getElementById('error').hidden = true;
+    } else {
+      document.getElementById('error').hidden = false;
+    }
+  }
+</script>
+
+</html>
