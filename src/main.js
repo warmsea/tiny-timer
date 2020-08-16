@@ -19,7 +19,7 @@ function createWindows() {
     controlWindow.on('closed', () => {
       controlWindow = undefined;
     });
-    controlWindow.loadFile('control.html');
+    controlWindow.loadFile(path.join(__dirname, 'control.html'));
   }
 
   if (!displayWindow) {
@@ -40,7 +40,7 @@ function createWindows() {
     displayWindow.on('closed', () => {
       displayWindow = undefined;
     });
-    displayWindow.loadFile('display.html');
+    displayWindow.loadFile(path.join(__dirname, 'display.html'));
   }
 }
 
