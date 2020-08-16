@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 const { ipcMain } = require('electron');
 
@@ -46,11 +46,29 @@ function createWindows() {
 
 app.whenReady().then(() => {
   createWindows();
-
   app.on('activate', function () {
     createWindows();
-  })
-})
+  });
+
+  globalShortcut.register('ctrl+shift+alt+1', () => {
+    if (displayWindow) {
+      displayWindow.webContents.send('startTimer', 300);
+      displayWindow.show();
+    }
+  });
+  globalShortcut.register('ctrl+shift+alt+2', () => {
+    if (displayWindow) {
+      displayWindow.webContents.send('startTimer', 600);
+      displayWindow.show();
+    }
+  });
+  globalShortcut.register('ctrl+shift+alt+3', () => {
+    if (displayWindow) {
+      displayWindow.webContents.send('startTimer', 900);
+      displayWindow.show();
+    }
+  });
+});
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
