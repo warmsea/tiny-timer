@@ -51,9 +51,20 @@
               "config": "./webpack.renderer.config.js",
               "entryPoints": [
                 {
+                  "name": "main_window",
                   "html": "./src/main/main.html",
                   "js": "./src/main/main.tsx",
-                  "name": "main_window"
+                  "preload": {
+                    "js": "./src/main/preload.ts"
+                  }
+                },
+                {
+                  "name": "display_window",
+                  "html": "./src/display/display.html",
+                  "js": "./src/display/display.tsx",
+                  "preload": {
+                    "js": "./src/display/preload.ts"
+                  }
                 }
               ]
             }
