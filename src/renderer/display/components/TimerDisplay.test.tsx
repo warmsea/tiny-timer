@@ -1,12 +1,7 @@
-jest.mock('../../common/Bridge', () => ({
-  Bridge: { on: jest.fn() }
-}));
-
 import React from 'react';
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from 'react-dom/test-utils';
 
-import { Bridge } from '../../common/Bridge';
 import { ColorStyle, getColorStyle, getDisplayNumber, TimerDisplay } from './TimerDisplay';
 
 describe('getDisplayNumber', () => {
@@ -48,10 +43,18 @@ describe('TimerDisplay', () => {
   });
 
   afterEach(() => {
+    jest.restoreAllMocks();
     unmountComponentAtNode(container);
     container.remove();
     container = null;
   });
+
+  function createMockBridge(mockSeconds: number) {
+    return {
+      send: () => { },
+      on: (_: string, listener: (event: undefined, seconds: number) => void) => listener(undefined, mockSeconds),
+    }
+  }
 
   it('should show 00:00 on initial state', () => {
     act(() => {
@@ -61,7 +64,7 @@ describe('TimerDisplay', () => {
   });
 
   it('should pad numbers to 2 digits', () => {
-    render(<TimerDisplay bridge={{ send: () => { }, on: (_, listener) => listener(undefined, 61) }} />, container);
+    render(<TimerDisplay bridge={createMockBridge(61)} />, container);
     act(() => {
       render(<TimerDisplay bridge={{ send: () => { }, on: () => { } }} />, container);
     });
@@ -70,7 +73,7 @@ describe('TimerDisplay', () => {
 
   it('should show a minus sign for negtive seconds', () => {
     act(() => {
-      render(<TimerDisplay bridge={{ send: () => { }, on: (_, listener) => listener(undefined, -1) }} />, container);
+      render(<TimerDisplay bridge={createMockBridge(-1)} />, container);
     });
     expect(container.textContent).toBe('-00:01');
   });

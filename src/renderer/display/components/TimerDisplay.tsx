@@ -1,8 +1,8 @@
 import { Box } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 
-import { IBridge } from '../../common/Bridge';
-import { Channel } from '../../common/Channel';
+import { IBridge } from '../../../common/Bridge';
+import { Channel } from '../../../common/Channel';
 
 export function getDisplayNumber(seconds: number): number {
   if (Math.abs(seconds) >= 3600) {

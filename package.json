@@ -10,7 +10,7 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts .",
-    "jest": "jest --coverage"
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": {
@@ -61,10 +61,10 @@
                 },
                 {
                   "name": "display_window",
-                  "html": "./src/display/display.html",
-                  "js": "./src/display/display.tsx",
+                  "html": "./src/renderer/display/display.html",
+                  "js": "./src/renderer/display/display.tsx",
                   "preload": {
-                    "js": "./src/display/preload.ts"
+                    "js": "./src/renderer/display/preload.ts"
                   }
                 }
               ]

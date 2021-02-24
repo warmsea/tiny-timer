@@ -2,7 +2,7 @@ import { CssBaseline } from '@material-ui/core';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Bridge } from '../common/Bridge';
+import { Bridge } from '../../common/Bridge';
 import { TimerDisplay } from './components/TimerDisplay';
 
 import './display.scss';
