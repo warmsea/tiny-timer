@@ -1,7 +1,7 @@
 import { Box, Container, Grid } from '@material-ui/core';
 import React, { useCallback, useState } from 'react';
-import { Channel } from '../../common/Channel';
-import { Bridge } from '../../common/Bridge';
+import { Channel } from '../../../common/Channel';
+import { Bridge } from '../../../common/Bridge';
 import { Ticker } from '../ticker/Ticker';
 import { TimerControl } from './TimerControl';
 import { TimerInput } from './TimerInput';
