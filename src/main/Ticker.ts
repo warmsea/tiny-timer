@@ -2,7 +2,7 @@ export class Ticker {
   private _tickAction: (remainingSeconds: number) => void;
   private _remainingMs: number;
   private _targetTime: number;
-  private _runningId: number;
+  private _runningId: NodeJS.Timeout;
   private _lastTick: number;
 
   public setTickAction(tickAction: (remainingSeconds: number) => void): void {
@@ -27,7 +27,7 @@ export class Ticker {
     this._stop();
   }
 
-  private _tick(remainingSeconds: number) {
+  public tick(remainingSeconds: number) {
     if (remainingSeconds !== this._lastTick) {
       this._lastTick = remainingSeconds;
       this._tickAction?.(remainingSeconds);
@@ -37,9 +37,9 @@ export class Ticker {
   private _run() {
     this._targetTime = Date.now() + this._remainingMs;
     if (!this._runningId) {
-      this._runningId = window.setInterval(() => {
+      this._runningId = setInterval(() => {
         const remainingSeconds = Math.ceil((this._targetTime - Date.now()) / 1000);
-        this._tick(remainingSeconds);
+        this.tick(remainingSeconds);
       }, 50);
     }
   }
@@ -49,7 +49,7 @@ export class Ticker {
     this._targetTime = undefined;
     if (this._runningId) {
       clearInterval(this._runningId);
-      this._runningId = 0;
+      this._runningId = undefined;
     }
   }
 }
