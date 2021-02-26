@@ -2,9 +2,9 @@ import { IpcRendererEvent, contextBridge, ipcRenderer } from "electron";
 
 export function preloadBridge(): void {
   contextBridge.exposeInMainWorld("bridge", {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     on: (
       channel: string,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       listener: (event: IpcRendererEvent, ...args: any[]) => void
     ) => {
       ipcRenderer.on(channel, listener);

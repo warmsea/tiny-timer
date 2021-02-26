@@ -27,7 +27,7 @@ export class Ticker {
     this._stop();
   }
 
-  public tick(remainingSeconds: number) {
+  public tick(remainingSeconds: number): void {
     if (remainingSeconds !== this._lastTick) {
       this._lastTick = remainingSeconds;
       this._tickAction?.(remainingSeconds);

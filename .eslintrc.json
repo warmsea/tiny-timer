@@ -19,15 +19,5 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
-  },
-  "rules": {
-    // Possible Errors
-    "no-console": ["warn"],
-    // Stylistic Issues
-    "quotes": ["error", "single"],
-    // ECMAScript 6
-    "no-duplicate-imports": ["warn"],
-    "sort-imports": ["warn"],
-    "prefer-const": ["warn"]
   }
 }
