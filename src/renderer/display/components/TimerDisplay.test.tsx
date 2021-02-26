@@ -9,6 +9,10 @@ import {
   TimerDisplay,
 } from "./TimerDisplay";
 
+function doNothing() {
+  // Do nothing
+}
+
 describe("getDisplayNumber", () => {
   it("should return seconds when within a hour", () => {
     expect(getDisplayNumber(3599)).toBe(3599);
@@ -57,7 +61,7 @@ describe("TimerDisplay", () => {
 
   function createMockBridge(mockSeconds: number) {
     return {
-      send: () => {},
+      send: doNothing,
       on: (_: string, listener: (event: undefined, seconds: number) => void) =>
         listener(undefined, mockSeconds),
     };
@@ -66,7 +70,7 @@ describe("TimerDisplay", () => {
   it("should show 00:00 on initial state", () => {
     act(() => {
       render(
-        <TimerDisplay bridge={{ send: () => {}, on: () => {} }} />,
+        <TimerDisplay bridge={{ send: doNothing, on: doNothing }} />,
         container
       );
     });

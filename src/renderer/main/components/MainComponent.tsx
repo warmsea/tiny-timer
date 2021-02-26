@@ -1,6 +1,6 @@
 import React from "react";
 import { ControlView } from "./ControlView";
 
-export const MainComponent = () => {
+export function MainComponent(): JSX.Element {
   return <ControlView />;
-};
+}

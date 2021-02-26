@@ -14,7 +14,7 @@ function onTimerInputChange(value: number) {
   fullSeconds = value;
 }
 
-export const ControlView = () => {
+export function ControlView(): JSX.Element {
   const [initial, setInitial] = useState(true);
   const [running, setRunning] = useState(false);
   const [displayVisible, setDisplayVisible] = useState(false);
@@ -26,7 +26,7 @@ export const ControlView = () => {
     Bridge.on(Channel.HideDisplay, () => {
       setDisplayVisible(false);
     });
-    Bridge.on(Channel.Start, (_, fullSeconds) => {
+    Bridge.on(Channel.Start, () => {
       setInitial(false);
       setRunning(true);
       setDisplayVisible(true);
@@ -123,4 +123,4 @@ export const ControlView = () => {
       </Grid>
     </div>
   );
-};
+}

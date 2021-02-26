@@ -34,7 +34,7 @@ export interface ITimerDisplayProps {
   bridge: IBridge;
 }
 
-export const TimerDisplay = (props: ITimerDisplayProps) => {
+export function TimerDisplay(props: ITimerDisplayProps): JSX.Element {
   const [remainingSeconds, setRemainingSeconds] = useState(0);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export const TimerDisplay = (props: ITimerDisplayProps) => {
     });
   }, []);
 
-  let style = getColorStyle(remainingSeconds);
+  const style = getColorStyle(remainingSeconds);
   let displayNumber = getDisplayNumber(remainingSeconds);
   const sign = displayNumber < 0 ? <span className="sign">-</span> : <></>;
   displayNumber = Math.abs(displayNumber);
@@ -69,4 +69,4 @@ export const TimerDisplay = (props: ITimerDisplayProps) => {
       {secondPart}
     </Box>
   );
-};
+}

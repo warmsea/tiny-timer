@@ -5,7 +5,7 @@ export interface ITimerInputProps {
   onInputChange?: (seconds: number) => void;
 }
 
-export const TimerInput = (props: ITimerInputProps) => {
+export function TimerInput(props: ITimerInputProps): JSX.Element {
   let hours = 0;
   let minutes = 0;
   let seconds = 0;
@@ -48,4 +48,4 @@ export const TimerInput = (props: ITimerInputProps) => {
       />
     </div>
   );
-};
+}

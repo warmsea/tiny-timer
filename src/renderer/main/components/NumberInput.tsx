@@ -14,7 +14,7 @@ export interface INumberInputProps {
   onValueChange?: (value: number) => void;
 }
 
-export const NumberInput = (props: INumberInputProps) => {
+export function NumberInput(props: INumberInputProps): JSX.Element {
   let value = 0;
 
   const onFocus = useCallback((event) => {
@@ -52,4 +52,4 @@ export const NumberInput = (props: INumberInputProps) => {
       onChange={onChange}
     />
   );
-};
+}
