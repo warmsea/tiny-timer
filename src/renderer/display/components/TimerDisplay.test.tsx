@@ -14,6 +14,7 @@ describe('getDisplayNumber', () => {
   });
 
   it('should return minutes when reaching a hour', () => {
+    expect(getDisplayNumber(3601)).toBe(61);
     expect(getDisplayNumber(3600)).toBe(60);
     expect(getDisplayNumber(-3600)).toBe(-60);
   });
@@ -64,9 +65,8 @@ describe('TimerDisplay', () => {
   });
 
   it('should pad numbers to 2 digits', () => {
-    render(<TimerDisplay bridge={createMockBridge(61)} />, container);
     act(() => {
-      render(<TimerDisplay bridge={{ send: () => { }, on: () => { } }} />, container);
+      render(<TimerDisplay bridge={createMockBridge(61)} />, container);
     });
     expect(container.textContent).toBe('01:01');
   });
