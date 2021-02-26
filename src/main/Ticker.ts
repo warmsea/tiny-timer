@@ -38,7 +38,9 @@ export class Ticker {
     this._targetTime = Date.now() + this._remainingMs;
     if (!this._runningId) {
       this._runningId = setInterval(() => {
-        const remainingSeconds = Math.ceil((this._targetTime - Date.now()) / 1000);
+        const remainingSeconds = Math.ceil(
+          (this._targetTime - Date.now()) / 1000
+        );
         this.tick(remainingSeconds);
       }, 50);
     }

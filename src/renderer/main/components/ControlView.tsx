@@ -1,13 +1,13 @@
-import { Button, ButtonGroup, Grid } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
-import { Channel } from '../../../common/Channel';
-import { Bridge } from '../../../common/Bridge';
-import { TimerInput } from './TimerInput';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import StopIcon from '@material-ui/icons/Stop';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import PauseIcon from '@material-ui/icons/Pause';
+import { Button, ButtonGroup, Grid } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { Channel } from "../../../common/Channel";
+import { Bridge } from "../../../common/Bridge";
+import { TimerInput } from "./TimerInput";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import StopIcon from "@material-ui/icons/Stop";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import PauseIcon from "@material-ui/icons/Pause";
 
 let fullSeconds = 0;
 function onTimerInputChange(value: number) {
@@ -35,37 +35,46 @@ export const ControlView = () => {
 
   function renderResetButton() {
     return (
-      <Button variant='outlined' onClick={() => {
-        Bridge.send(Channel.Reset);
-        setRunning(false);
-        setInitial(true);
-      }} >
+      <Button
+        variant="outlined"
+        onClick={() => {
+          Bridge.send(Channel.Reset);
+          setRunning(false);
+          setInitial(true);
+        }}
+      >
         <StopIcon />
       </Button>
     );
-  };
+  }
 
   const renderStartButton = () => {
     if (running) {
       return (
-        <Button variant='contained' onClick={() => {
-          setRunning(false);
-          Bridge.send(Channel.Pause);
-        }}>
+        <Button
+          variant="contained"
+          onClick={() => {
+            setRunning(false);
+            Bridge.send(Channel.Pause);
+          }}
+        >
           <PauseIcon />
         </Button>
       );
     } else {
       return (
-        <Button variant='outlined' onClick={() => {
-          setRunning(true);
-          if (initial) {
-            setInitial(false);
-            Bridge.send(Channel.Start, fullSeconds);
-          } else {
-            Bridge.send(Channel.Resume);
-          }
-        }}>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            setRunning(true);
+            if (initial) {
+              setInitial(false);
+              Bridge.send(Channel.Start, fullSeconds);
+            } else {
+              Bridge.send(Channel.Resume);
+            }
+          }}
+        >
           <PlayArrowIcon />
         </Button>
       );
@@ -75,22 +84,28 @@ export const ControlView = () => {
   function renderVisibleButton() {
     if (displayVisible) {
       return (
-        <Button variant='contained' onClick={() => {
-          Bridge.send(Channel.HideDisplay);
-          setDisplayVisible(false);
-        }}>
+        <Button
+          variant="contained"
+          onClick={() => {
+            Bridge.send(Channel.HideDisplay);
+            setDisplayVisible(false);
+          }}
+        >
           <VisibilityOffIcon />
         </Button>
       );
     } else {
       return (
-        <Button variant='outlined' onClick={() => {
-          Bridge.send(Channel.ShowDisplay)
-          setDisplayVisible(true);
-        }}>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            Bridge.send(Channel.ShowDisplay);
+            setDisplayVisible(true);
+          }}
+        >
           <VisibilityIcon />
         </Button>
-      )
+      );
     }
   }
 
@@ -100,12 +115,12 @@ export const ControlView = () => {
         <TimerInput onInputChange={onTimerInputChange} />
       </Grid>
       <Grid container direction="row" justify="center" alignItems="center">
-    <ButtonGroup variant="outlined" color="primary">
-      {renderStartButton()}
-      {renderResetButton()}
-      {renderVisibleButton()}
-    </ButtonGroup>
+        <ButtonGroup variant="outlined" color="primary">
+          {renderStartButton()}
+          {renderResetButton()}
+          {renderVisibleButton()}
+        </ButtonGroup>
       </Grid>
     </div>
   );
-}
+};

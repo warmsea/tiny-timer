@@ -3,8 +3,8 @@ import React, { useCallback } from "react";
 
 const StyledTextField = withStyles({
   root: {
-    margin: '16px 4px'
-  }
+    margin: "16px 4px",
+  },
 })(TextField);
 
 export interface INumberInputProps {
@@ -22,7 +22,7 @@ export const NumberInput = (props: INumberInputProps) => {
   }, []);
   const onChange = useCallback((event) => {
     let newValue;
-    if (event.target.value == '') {
+    if (event.target.value == "") {
       newValue = 0;
     } else if (/^[0-9]{1,2}$/.test(event.target.value)) {
       newValue = parseInt(event.target.value);
@@ -52,4 +52,4 @@ export const NumberInput = (props: INumberInputProps) => {
       onChange={onChange}
     />
   );
-}
+};

@@ -1,3 +1,3 @@
-import { preloadBridge } from '../../common/preloadBridge';
+import { preloadBridge } from "../../common/preloadBridge";
 
 preloadBridge();

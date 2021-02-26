@@ -28,9 +28,24 @@ export const TimerInput = (props: ITimerInputProps) => {
 
   return (
     <div>
-      <NumberInput id='hours' label='hh' max={23} onValueChange={onHoursChange} />
-      <NumberInput id='minutes' label='mm' max={59} onValueChange={onMinutesChange} />
-      <NumberInput id='seconds' label='ss' max={59} onValueChange={onSecondsChange} />
+      <NumberInput
+        id="hours"
+        label="hh"
+        max={23}
+        onValueChange={onHoursChange}
+      />
+      <NumberInput
+        id="minutes"
+        label="mm"
+        max={59}
+        onValueChange={onMinutesChange}
+      />
+      <NumberInput
+        id="seconds"
+        label="ss"
+        max={59}
+        onValueChange={onSecondsChange}
+      />
     </div>
-  )
-}
+  );
+};
