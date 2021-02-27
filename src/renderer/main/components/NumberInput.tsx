@@ -46,6 +46,7 @@ export function NumberInput(props: INumberInputProps): JSX.Element {
       label={props.label}
       variant="outlined"
       size="small"
+      InputLabelProps={{ shrink: true }} // Force shrink state: https://material-ui.com/components/text-fields/#shrink
       inputProps={{ min: 0, max: props.max, step: 1 }}
       defaultValue={value}
       onFocus={onFocus}
