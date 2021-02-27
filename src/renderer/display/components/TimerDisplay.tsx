@@ -13,8 +13,8 @@ export function getDisplayNumber(seconds: number): number {
 }
 
 export const ColorStyle = {
-  Normal: { bgcolor: "white", color: "green" },
-  Warn: { bgcolor: "yellow", color: "black" },
+  Normal: { bgcolor: "white", color: "black" },
+  Warn: { bgcolor: "green", color: "white" },
   TimeOut: { bgcolor: "red", color: "white" },
 };
 
