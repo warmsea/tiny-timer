@@ -87,7 +87,8 @@ app.on("window-all-closed", () => {
   }
 });
 
-app.on('activate', () => {  // macOS
+// Show the main window when clicking on the application's dock or taskbar icon
+app.on("activate", () => {
   createMainWindow();
   createDisplayWindow();
 });
