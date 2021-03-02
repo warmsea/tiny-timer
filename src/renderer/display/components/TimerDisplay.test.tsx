@@ -34,13 +34,16 @@ describe("getColorStyle", () => {
     expect(getColorStyle(31)).toBe(ColorStyle.Normal);
   });
 
-  it("should return Normal with 1 - 30 seconds remaining", () => {
+  it("should return Warn with 1 - 30 seconds remaining", () => {
     expect(getColorStyle(30)).toBe(ColorStyle.Warn);
     expect(getColorStyle(1)).toBe(ColorStyle.Warn);
   });
 
-  it("should return Normal with no more second remaining", () => {
-    expect(getColorStyle(0)).toBe(ColorStyle.TimeOut);
+  it("should return Zero at 0 second remaining", () => {
+    expect(getColorStyle(0)).toBe(ColorStyle.Zero);
+  });
+
+  it("should return Timeout with timeout", () => {
     expect(getColorStyle(-1)).toBe(ColorStyle.TimeOut);
   });
 });

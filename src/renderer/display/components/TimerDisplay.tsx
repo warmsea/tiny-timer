@@ -13,8 +13,9 @@ export function getDisplayNumber(seconds: number): number {
 }
 
 export const ColorStyle = {
-  Normal: { bgcolor: "white", color: "green" },
+  Normal: { bgcolor: "green", color: "white" },
   Warn: { bgcolor: "yellow", color: "black" },
+  Zero: { bgcolor: "white", color: "black" },
   TimeOut: { bgcolor: "red", color: "white" },
 };
 
@@ -25,6 +26,8 @@ export function getColorStyle(
     return ColorStyle.Normal;
   } else if (remainingSeconds > 0) {
     return ColorStyle.Warn;
+  } else if (remainingSeconds == 0) {
+    return ColorStyle.Zero;
   } else {
     return ColorStyle.TimeOut;
   }
