@@ -1,4 +1,10 @@
-import { BrowserWindow, app, ipcMain, IpcMainEvent } from "electron";
+import {
+  BrowserWindow,
+  app,
+  ipcMain,
+  IpcMainEvent,
+  globalShortcut,
+} from "electron";
 import { Ticker } from "./Ticker";
 
 import { Channel } from "../common/Channel";
@@ -76,6 +82,16 @@ ticker.setTickAction((remainingSeconds) => {
 app.on("ready", () => {
   createMainWindow();
   createDisplayWindow();
+
+  globalShortcut.register("Ctrl+Alt+Shift+1", () => {
+    startTimer(5 * 60); // 5 minutes
+  });
+  globalShortcut.register("Ctrl+Alt+Shift+2", () => {
+    startTimer(10 * 60); // 10 minutes
+  });
+  globalShortcut.register("Ctrl+Alt+Shift+3", () => {
+    startTimer(20 * 60); // 20 minutes
+  });
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -91,6 +107,10 @@ app.on("window-all-closed", () => {
 app.on("activate", () => {
   createMainWindow();
   createDisplayWindow();
+});
+
+app.on("will-quit", () => {
+  globalShortcut.unregisterAll();
 });
 
 function startTimer(fullSeconds: number): void {
