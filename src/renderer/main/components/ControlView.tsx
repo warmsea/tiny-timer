@@ -121,6 +121,19 @@ export function ControlView(): JSX.Element {
           {renderVisibleButton()}
         </ButtonGroup>
       </Grid>
+      <Grid container direction="row" justify="center" alignItems="center">
+        <div className="shortcut-tips">
+          <p>
+            <strong>Ctrl+Alt+Shift+1</strong> to restart with 5 minutes
+          </p>
+          <p>
+            <strong>Ctrl+Alt+Shift+2</strong> to restart with 10 minutes
+          </p>
+          <p>
+            <strong>Ctrl+Alt+Shift+3</strong> to restart with 20 minutes
+          </p>
+        </div>
+      </Grid>
     </div>
   );
 }
