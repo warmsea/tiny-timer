@@ -22,18 +22,21 @@ if (require("electron-squirrel-startup")) {
 
 let mainWindow: BrowserWindow;
 const createMainWindow = (): void => {
-  mainWindow = new BrowserWindow({
-    height: 300,
-    width: 400,
-    webPreferences: {
-      contextIsolation: true,
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-    },
-  });
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-  mainWindow.on("closed", () => {
-    mainWindow = null;
-  });
+  if (!mainWindow) {
+    mainWindow = new BrowserWindow({
+      height: 300,
+      width: 400,
+      webPreferences: {
+        contextIsolation: true,
+        preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      },
+    });
+    mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+    mainWindow.on("closed", () => {
+      mainWindow = null;
+    });
+  }
+  mainWindow.show();
 };
 
 let displayWindow: BrowserWindow;
