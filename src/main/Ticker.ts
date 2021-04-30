@@ -23,7 +23,7 @@ export class Ticker {
   }
 
   public reset(): void {
-    this._remainingMs = 0;
+    this._targetTime = undefined;
     this._stop();
   }
 
@@ -47,11 +47,16 @@ export class Ticker {
   }
 
   private _stop() {
-    this._remainingMs = this._targetTime - Date.now();
-    this._targetTime = undefined;
     if (this._runningId) {
       clearInterval(this._runningId);
       this._runningId = undefined;
+    }
+    if (this._targetTime === undefined) {
+      this._remainingMs = 0;
+      this.tick(0);
+    } else {
+      this._targetTime = undefined;
+      this._remainingMs = this._targetTime - Date.now();
     }
   }
 }
