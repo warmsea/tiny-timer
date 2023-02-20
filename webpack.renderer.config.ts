@@ -1,5 +1,5 @@
-const rules = require("./webpack.rules");
-const plugins = require("./webpack.plugins");
+const rules = require("./webpack.rules.ts");
+const plugins = require("./webpack.plugins.ts");
 
 rules.push({
   test: /\.css$/,
