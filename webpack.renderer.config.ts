@@ -1,16 +1,18 @@
-const rules = require("./webpack.rules.ts");
-const plugins = require("./webpack.plugins.ts");
+import type { Configuration } from "webpack";
+
+import { rules } from "./webpack.rules";
+import { plugins } from "./webpack.plugins";
 
 rules.push({
   test: /\.css$/,
   use: [{ loader: "style-loader" }, { loader: "css-loader" }],
 });
 
-module.exports = {
+export const rendererConfig: Configuration = {
   module: {
     rules,
   },
-  plugins: plugins,
+  plugins,
   resolve: {
     extensions: [".js", ".ts", ".jsx", ".tsx", ".css"],
   },

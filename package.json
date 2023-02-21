@@ -18,93 +18,37 @@
     "email": "s@warmsea.net"
   },
   "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "tiny_timer"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ],
-      "plugins": [
-        [
-          "@electron-forge/plugin-webpack",
-          {
-            "mainConfig": "./webpack.main.config.ts",
-            "renderer": {
-              "config": "./webpack.renderer.config.ts",
-              "entryPoints": [
-                {
-                  "name": "main_window",
-                  "html": "./src/renderer/main/main.html",
-                  "js": "./src/renderer/main/main.tsx",
-                  "preload": {
-                    "js": "./src/renderer/main/preload.ts"
-                  }
-                },
-                {
-                  "name": "display_window",
-                  "html": "./src/renderer/display/display.html",
-                  "js": "./src/renderer/display/display.tsx",
-                  "preload": {
-                    "js": "./src/renderer/display/preload.ts"
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      ]
-    }
-  },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-    "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "@electron-forge/plugin-webpack": "6.0.0-beta.54",
-    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-rpm": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
+    "@electron-forge/plugin-webpack": "^6.0.5",
     "@types/jest": "^26.0.20",
     "@types/react-dom": "^17.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.0.1",
-    "@typescript-eslint/parser": "^4.0.1",
-    "css-loader": "^5.2.4",
-    "electron": "12.0.6",
-    "eslint": "^7.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "@vercel/webpack-asset-relocator-loader": "1.7.3",
+    "css-loader": "^6.0.0",
+    "electron": "23.1.0",
+    "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import": "^2.25.0",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.2.0",
-    "fork-ts-checker-webpack-plugin": "^6.2.5",
+    "fork-ts-checker-webpack-plugin": "^7.2.13",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "node-loader": "^2.0.0",
     "prettier": "2.2.1",
     "sass": "^1.32.7",
     "sass-loader": "^10.1.1",
-    "style-loader": "^1.2.1",
+    "style-loader": "^3.0.0",
     "ts-jest": "^26.5.1",
-    "ts-loader": "^8.0.2",
-    "typescript": "^4.0.2",
-    "webpack": "^5.21.2"
+    "ts-loader": "^9.2.2",
+    "ts-node": "^10.0.0",
+    "typescript": "~4.5.4"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
